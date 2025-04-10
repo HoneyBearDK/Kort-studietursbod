@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Find vej til 2.10</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+      text-align: center;
+    }
+
+    select {
+      padding: 10px;
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    #map {
+      max-width: 100%;
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      margin-top: 20px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Find vej til 2.10</h1>
+
+  <label for="start-location">Hvor starter du?</label><br>
+  <select id="start-location">
+    <option value="">-- Vælg et lokale --</option>
+    <optgroup label="1.00-lokaler">
+    
+      <option value="1.05">1.05</option>
+      <option value="1.06">1.06</option>
+      <option value="1.07">1.07</option>
+      
+      <option value="1.15">1.15</option>
+      <option value="1.16">1.16</option>
+      
+    </optgroup>
+    <optgroup label="2.00-lokaler">
+      <option value="2.02">2.02</option>
+      <option value="2.03">2.03</option>
+      <option value="2.04">2.04</option>
+      <option value="2.05">2.05</option>
+      <option value="2.06">2.06</option>
+      <option value="2.07">2.07</option>
+      <option value="2.08">2.08</option>
+      <option value="2.09">2.09</option>
+      <option value="2.11">2.11</option>
+      <option value="2.12">2.12</option>
+      <option value="2.51">2.51</option>
+      <option value="2.52">2.52</option>
+      <option value="2.53">2.53</option>
+      <option value="2.54">2.54</option>
+    </optgroup>
+    <optgroup label="3.00-lokaler">
+      <option value="3.02">3.02</option>
+      <option value="3.03">3.03</option>
+    </optgroup>
+    <optgroup label="6.00-lokaler">
+      <option value="6.00">6.00</option>
+      <option value="6.02">6.02</option>
+      <option value="6.03">6.03</option>
+      <option value="6.04">6.04</option>
+    </optgroup>
+    <optgroup label="Andet">
+      <option value="kantine">Kantine</option>
+      <option value="hovedindgang">Hovedindgang</option>
+      <option value="hallen">Hallen</option>
+    </optgroup>
+  </select>
+
+  <div>
+    <img id="map" src="base-map.png" alt="Standardkort">
+  </div>
+
+  <script>
+    const image = document.getElementById("map");
+    const select = document.getElementById("start-location");
+
+    const routes = {
+      
+     "1.15": "Rute.100.png",
+      "1.16": "Rute.100.png",
+         "1.07": "Rute.100.png",
+      "1.05": "Rute.100.png",
+      "1.06": "Rute.100.png",
+    
+    
+      "2.02": "Rute.200.png",
+      "2.03": "Rute.200.png",
+        "2.04": "Rute.200.png",
+      "2.05": "Rute.200.png",
+        "2.06": "Rute.200.png",
+      "2.07": "Rute.200.png",
+        "2.08": "Rute.210.png",
+                "2.09": "Rute.210.png",
+                
+                "2.11": "Rute.210.png",
+                "2.12": "Rute.210.png",
+        "2.51": "Rute.250.png",
+        "2.52": "Rute.250.png",
+        "2.53": "Rute.250.png",
+        "2.54": "Rute.250.png",
+        
+ 
+      "3.02": "Rute.300.png",
+      "3.03": "Rute.300.png",
+      "6.00": "Rute.600.png",
+        "6.02": "Rute.600.png",
+      "6.03": "Rute.600.png",
+        "6.04": "Rute.600.png",
+      "kantine": "Rute.kantine.png",
+      "hovedindgang": "Rute.hovedindgang.png",
+      "hallen": "Rute.hal.png"
+    };
+
+    select.addEventListener("change", () => {
+      const value = select.value;
+      if (routes[value]) {
+        image.src = routes[value];
+      } else {
+        image.src = "base-map.png";
+      }
+    });
+  </script>
+
+</body>
+</html>
